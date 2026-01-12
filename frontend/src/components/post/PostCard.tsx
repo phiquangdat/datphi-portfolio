@@ -12,7 +12,7 @@ const PostCard: React.FC<PostCardProps> = React.memo(
 
     return (
       <div
-        className="my-8 w-full max-w-sm cursor-pointer"
+        className="my-4 w-full max-w-sm cursor-pointer"
         key={post.id}
         onClick={() => onCardClick(post)}
       >

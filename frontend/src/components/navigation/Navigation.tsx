@@ -19,7 +19,7 @@ const Navigation = ({ isScrolled }: { isScrolled: boolean }) => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           <a
             className="flex items-center text-xl font-bold transition-all duration-200 group relative"
-            href="#home"
+            href="/"
           >
             <span className="font-serif text-2xl lg:text-3xl font-bold text-white hover:text-blue-50 transition-all duration-300">
               Dat Phi

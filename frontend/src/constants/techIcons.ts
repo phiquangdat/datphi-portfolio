@@ -29,4 +29,8 @@ export const icons: { [key: string]: string | undefined } = {
     "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg",
   jenkins:
     "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg",
+  "c#": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg",
+  netmaui:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg",
+  xaml: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-original.svg",
 };
