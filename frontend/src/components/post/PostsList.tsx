@@ -47,7 +47,7 @@ const PostsList = () => {
   return (
     <div>
       <div className="max-w-7xl mx-auto">
-        <h2 className="my-8 text-4xl font-bold bg-slate-600 bg-clip-text text-transparent">
+        <h2 className="my-8 text-3xl font-bold bg-slate-600 bg-clip-text text-transparent">
           Projects
         </h2>
 
