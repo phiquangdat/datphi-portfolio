@@ -17,7 +17,9 @@ public interface PostsRepository extends JpaRepository<Posts, Long> {
 
     List<Posts> findByDateContaining(String date);
 
-    List<Posts> findByLinkContaining(String link);
+    List<Posts> findByGithubUrlContaining(String githubUrl);
+
+    List<Posts> findByVideoUrlContaining(String videoUrl);
 
     List<Posts> findByImageUrlContaining(String imageUrl);
 

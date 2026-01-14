@@ -61,7 +61,8 @@ public class PostsController {
             post.setTitle(postDetails.getTitle());
             post.setDescription(postDetails.getDescription());
             post.setDate(postDetails.getDate());
-            post.setLink(postDetails.getLink());
+            post.setGithubUrl(postDetails.getGithubUrl());
+            post.setVideoUrl(postDetails.getVideoUrl());
             post.setImageUrl(postDetails.getImageUrl());
             post.setLanguages(postDetails.getLanguages());
             

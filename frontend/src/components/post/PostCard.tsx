@@ -8,7 +8,7 @@ type PostCardProps = {
 
 const PostCard: React.FC<PostCardProps> = React.memo(
   ({ post, onCardClick }) => {
-    const { title, description, date, link, imageUrl } = post;
+    const { title, description, date, githubUrl, imageUrl } = post;
 
     return (
       <div
@@ -29,10 +29,10 @@ const PostCard: React.FC<PostCardProps> = React.memo(
               <h2 className="text-xl font-bold text-gray-900 font-serif line-clamp-2 flex-grow leading-tight">
                 {title}
               </h2>
-              {link && (
+              {githubUrl && (
                 <a
                   className="flex-shrink-0 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-700 hover:bg-blue-600 hover:text-white transition-all duration-200 transform hover:scale-110"
-                  href={link}
+                  href={githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="View on GitHub"

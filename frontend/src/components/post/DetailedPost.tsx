@@ -1,12 +1,38 @@
 import React from "react";
 import type { Post } from "../../services/postsApi";
 
+declare global {
+  var YT: any;
+  interface Window {
+    YT: any;
+    onYouTubeIframeAPIReady: () => void;
+  }
+}
 type PostDetailModalProps = {
   post: Post;
   onClose: () => void;
 };
 
+const FallbackVideo = ({ post }: { post: Post }) => {
+  return (
+    <div className="w-full flex justify-center">
+      <img
+        src={post.imageUrl}
+        alt={post.title}
+        className="w-full h-64 object-contain rounded-md mb-6"
+      />
+    </div>
+  );
+};
+
 import { icons } from "../../constants/techIcons";
+
+const getEmbedUrl = (url: string) => {
+  const match = url.match(
+    /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
+  );
+  return match ? `https://www.youtube.com/embed/${match[1]}` : url;
+};
 
 const PostDetailModal: React.FC<PostDetailModalProps> = ({ post, onClose }) => {
   return (
@@ -31,9 +57,9 @@ const PostDetailModal: React.FC<PostDetailModalProps> = ({ post, onClose }) => {
           <h1 className="text-3xl font-bold font-serif text-slate-900 leading-tight flex-1">
             {post.title}
           </h1>
-          {post.link && (
+          {post.githubUrl && (
             <a
-              href={post.link}
+              href={post.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-5 py-2.5 bg-slate-900 text-white rounded-xl hover:bg-slate-800 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5 whitespace-nowrap group self-start sm:self-center"
@@ -53,11 +79,22 @@ const PostDetailModal: React.FC<PostDetailModalProps> = ({ post, onClose }) => {
             </a>
           )}
         </div>
-        <img
-          src={post.imageUrl}
-          alt={post.title}
-          className="w-full h-64 object-contain rounded-md mb-6"
-        />
+
+        {post.videoUrl ? (
+          <div className="w-full flex justify-center">
+            <iframe
+              id="ytplayer"
+              width="480"
+              height="270"
+              src={getEmbedUrl(post.videoUrl)}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        ) : (
+          <FallbackVideo post={post} />
+        )}
+
         <div className="flex flex-wrap gap-2.5 my-2">
           {post.languages?.map((lang) => {
             const fullTechKey = lang.toLowerCase().replace(/[\s\.\-]/g, "");

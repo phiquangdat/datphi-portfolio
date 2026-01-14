@@ -31,7 +31,11 @@ public class Posts {
 
     private String date;
 
-    private String link;
+    @Column(name="video_url")
+    private String videoUrl;
+
+    @Column(name="github_url")
+    private String githubUrl;
 
     @Column(name="image_url")
     private String imageUrl;
